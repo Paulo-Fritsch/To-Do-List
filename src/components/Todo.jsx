@@ -1,7 +1,7 @@
 import React, {useState} from "react";
-import {AiFillEdit} from 'react-icons/ai'
+import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
 
-    function Todo({todos, completeTodo}) {
+    function Todo({todos, completeTodo, deleteTodo}) {
     const [edit, setEdit] = useState({
         id: null,
         value: ''
@@ -16,6 +16,7 @@ import {AiFillEdit} from 'react-icons/ai'
             </div>
             <div>
             <AiFillEdit/>
+            <AiOutlineDelete onClick={() => deleteTodo(todo.id)}/>
             </div>
         </div>
     ));

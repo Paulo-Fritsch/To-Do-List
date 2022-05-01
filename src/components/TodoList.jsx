@@ -22,14 +22,23 @@ function TodoList() {
         }
         return todo
       })
-      
+
       setTodos(updateTodo)
+    }
+
+    const deleteTodo = (id) => {
+      const newTodo = [...todos].filter(todo => todo.id !== id)
+      setTodos(newTodo)
     }
     return (
       <div>
         <h1>Anotações - To Do List</h1>
         <TodoForm onSubmit={addTodo}/>
-        <Todo todos={todos} completeTodo={completeTodo}/>
+        <Todo 
+        todos={todos} 
+        completeTodo={completeTodo}
+        deleteTodo={deleteTodo}
+        />
       </div>
     );
 }
