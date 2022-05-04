@@ -2,11 +2,12 @@ import React, {useState} from "react";
 import {AiFillEdit, AiOutlineDelete} from 'react-icons/ai'
 import TodoForm from "./TodoForm";
 
-    function Todo({todos, completeTodo, deleteTodo, editTodo}) {
+function Todo({todos, completeTodo, deleteTodo, editTodo}) {
     const [edit, setEdit] = useState({
         id: null,
         value: ''
     })
+
     const submitEdit = (value) => {
         editTodo(edit.id, value);
         setEdit({
@@ -14,9 +15,11 @@ import TodoForm from "./TodoForm";
             value: ''
         })
     };
+
     if (edit.id){
         return <TodoForm edit={edit} onSubmit={submitEdit}/>
     }
+
     return todos.map((todo, index) => (
         <div 
         className={todo.isComplete ? 'todo-row complete' : 'todo-row'} 
@@ -25,13 +28,8 @@ import TodoForm from "./TodoForm";
                 {todo.text}
             </div>
             <div>
-            <AiFillEdit onClick={() => setEdit(
-                {
-                    id: todo.id, 
-                    value: todo.text
-                })}/>
-            
-            <AiOutlineDelete onClick={() => deleteTodo(todo.id)}/>
+            <AiFillEdit onClick={() => setEdit({id: todo.id, value: todo.text})} className="edit-icon"/>
+            <AiOutlineDelete onClick={() => deleteTodo(todo.id)} className="delete-icon"/>
             </div>
         </div>
     ));
