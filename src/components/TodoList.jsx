@@ -7,12 +7,12 @@ function TodoList() {
     
     const addTodo = todo => {
         if (!todo.text || /^\s*$/.test(todo.text)){
-            return 
+            return;
         }
 
         const newTodos = [todo, ...todos]
         setTodos(newTodos);
-        console.log(...todos);
+        console.log(...todos, todo);
     }
 
     const completeTodo = (id) => {
